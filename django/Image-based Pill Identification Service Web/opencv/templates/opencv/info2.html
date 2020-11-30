@@ -1,0 +1,26 @@
+{% extends 'index.html' %}
+{% load static%}
+{% block title %}- info{% endblock %}
+
+
+{% block content %}
+<br>
+<br>
+<br>
+
+<br>
+<img src='{% static "img/55.png" %}' width = "600" >
+<img src='{% static "img/444.png" %}' width = "600" >
+                <br>
+
+    
+                <!-- image upload start-->
+
+                        <br>
+                        <br>
+                        <p>더 자세히 알고싶다면 <a href="http://www.health.kr"><strong>약학정보원 바로가기</strong></a></p>
+
+            
+                        <p><a href="{% url 'again' %}">Return to home</a></p>
+                        
+{% endblock %}

@@ -1,0 +1,48 @@
+{% extends 'index.html' %}
+{% block title %}- first{% endblock %}
+        
+        
+{% block content %}
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+                    <h2 class="mb-5"><span style="color:aquamarine">식별표시</span>가 <strong><span style="color:aquamarine">정방향</span></strong>으로 보이도록<br> 사진을 찍어주세요.</h2>
+                    <form method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <button type="submit" class="btn btn-outline-warning" >Upload</button>
+                                    
+                    </form>
+                
+                        {% if post %}
+                        <img src="{{ post.document.url }}", width="300"><br>
+                        <p>Result: {{ ocrResult }}</a><br>
+
+                            {% for pill in pills %}
+                            <img src ="{{pill.item_image}}" width="300">
+                        <br>
+                            <p><a href="{%url 'info2'%}">제품명 : {{pill.item_name}}</a></p>
+                            <br>
+                            <p>회사명 : {{pill.entp_name}}</p>
+                            <p>식약처분류 : {{pill.class_name}}</p>
+                            <p>전문/일반 : {{pill.etc_otc_name}}</p>
+                            
+                            {% endfor %}
+    
+                        <a href="{% url 'again'%}" class="btn btn-outline btn-xl js-scroll-trigger">이 약이 아닙니다. </a>
+                        
+                        {% endif %}
+                        <br>
+                        <br>
+                        <br>
+                     
+                        <p><a href="{% url 'first' %}">Return to home</a></p>
+            
+{% endblock %}
