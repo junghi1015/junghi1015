@@ -1,0 +1,26 @@
+{% extends 'index.html' %}
+{% block title %}- again{% endblock %}
+
+
+{% block content %}
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<img src='{% static "img/5.png" %}' width = "" >
+<img src='{% static "img/4.png" %}' width = "" >
+                <br>
+                <P> 더 자세히 알고싶다면</P>
+            <a href="{% url 'dface'%}" class="btn btn-outline btn-xl js-scroll-trigger">약학정보원 </a></p>
+        {% endif %}
+
+            <br>
+            <br>
+            <br>
+            <p><a href="{% url 'index' %}">Return to home</a></p>
+            
+{% endblock %}

@@ -1,0 +1,37 @@
+
+{% extends 'index.html' %}
+{% block title %}- dface{% endblock %}
+        
+        
+{% block content %}
+
+                    <h2 class="mb-5"><b>식별표시</b>가 <strong>정방향</strong>으로 보이도록<br> 사진을 찍어주세요.</h2>
+                    <form method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <button type="submit" class="btn btn-outline-warning" >Upload</button>
+                                    
+                    </form>
+                
+                        {% if post %}
+                        <img src="{{ post.document.url }}", width="600"><br>
+                        <p>Result: {{ ocrResult }}</a><br>
+
+                            {% for pill in pills %}
+                            <img src ="{{pill.item_image}}" width="300">
+                            <br>
+                            <p>제품명 : {{pill.item_name}}</p>
+                            <p>회사명 : {{pill.entp_name}}</p>
+                            <p>식약처분류 : {{pill.class_name}}</p>
+                            <p>전문/일반 : {{pill.etc_otc_name}}</p>
+                            
+                            {% endfor %}
+    
+                        <a href="{% url 'again'%}" class="btn btn-outline btn-xl js-scroll-trigger">이 약이 아닙니다. </a>
+                        
+                        {% endif %}
+                        <br>
+                        <br>
+                        <p><a href="{% url 'dface' %}">Return to home</a></p>
+            
+{% endblock %}
